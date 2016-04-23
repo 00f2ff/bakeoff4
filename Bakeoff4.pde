@@ -24,7 +24,7 @@ float light = 0;
   int countDownTimerWait = 0;
   
   void setup() {
-    size(600,600); //you can change this to be fullscreen
+    size(400,800); //you can change this to be fullscreen
     frameRate(60);
     sensor = new KetaiSensor(this);
     sensor.start();
