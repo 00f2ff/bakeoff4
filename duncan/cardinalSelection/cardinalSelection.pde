@@ -27,7 +27,7 @@ boolean userDone = false;
 int countDownTimerWait = 0;
 
 void setup() {
-  size(400,800); //you can change this to be fullscreen
+  size(480,800); //you can change this to be fullscreen
   frameRate(60);
   sensor = new KetaiSensor(this);
   sensor.start();
@@ -83,16 +83,16 @@ void draw() {
   // Draw targets (mapping to index is: 0 --> left, 1 --> right, 2 --> top, 3 --> bottom)
   // draw left target
   determineFill(0);
-  rect(width/5, height/2, 50, 150);
+  rect(50, 500, 100, 300);
   // draw right target
   determineFill(1);
-  rect(width/5 + 75, height/2, 50, 150);
+  rect(175, 500, 100, 300);
   // draw top target
   determineFill(2);
-  rect(width/2, height/5, 150, 50);
+  rect(width/2, height/4, 300, 100);
   // draw bottom target
   determineFill(3);
-  rect(width/2, height/5 + 75, 150, 50);
+  rect(width/2, height/4 + 125, 300, 100);
 
   // respond to light sensor (remove this)
   if (light>20)
