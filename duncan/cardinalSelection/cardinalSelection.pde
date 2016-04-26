@@ -51,7 +51,8 @@ void setup() {
 
 void determineFill(int index)
 {
-  if (targets.get(trialIndex).target==index) fill(0,0,255);
+  if (targets.get(trialIndex).target==index && targets.get(index).selected) fill(0,255,0);
+  else if (targets.get(trialIndex).target==index) fill(0,0,255);
   else if (targets.get(index).selected) fill(0,255,255); 
   else fill(180,180,180);
 }
@@ -166,17 +167,45 @@ void determineSelected()
     // last two moves in same direction
     if (current.axis.equals(previous.axis))
     {
-      // select left
-      if (current.axis.equals("x")) targets.get(0).selected = true;
-      // select top
-      else targets.get(2).selected = true;
+      // if left selected, movement selects right
+      if (current.axis.equals("x") && targets.get(0).selected)
+      {
+        deselectTargets();
+        targets.get(1).selected = true;
+      }
+      // if right selected, movement selects left
+      else if (current.axis.equals("x") && targets.get(1).selected)
+      {
+        deselectTargets();
+        targets.get(0).selected = true;
+      }
+      // if top selected, movement selects bottom
+      if (current.axis.equals("y") && targets.get(2).selected)
+      {
+        deselectTargets();
+        targets.get(3).selected = true;
+      }
+      // if bottom selected, movement selects top
+      else if (current.axis.equals("y") && targets.get(3).selected)
+      {
+        deselectTargets();
+        targets.get(2).selected = true;
+      }
     }
-    else
+    else // (reset)
     {
       // select right
-      if (current.axis.equals("x")) targets.get(1).selected = true;
+      if (current.axis.equals("x")) 
+      {
+        deselectTargets();
+        targets.get(1).selected = true;
+      }
       // select bottom
-      else targets.get(3).selected = true;
+      else 
+      {
+        deselectTargets();
+        targets.get(3).selected = true;
+      }
     }
   }
 }
