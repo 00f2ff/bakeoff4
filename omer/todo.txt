@@ -1,0 +1,8 @@
+Raise and lower hand over proximity sensor -- Omer 
+Tap table at different distances from phone -- Omer
+Compass (phone rotation) -- Omer
+
+0 -> 2
+1 -> 0
+2 -> 3
+3 -> 1
