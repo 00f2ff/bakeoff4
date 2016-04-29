@@ -212,6 +212,7 @@ void determineSelected()
 
 void onAccelerometerEvent(float x, float y, float z)
 {
+  if (z > 4 || z < -4) System.out.println(z);
     if (moves.size() == 0)
     {
       if (y > 1)
