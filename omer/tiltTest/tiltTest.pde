@@ -8,7 +8,6 @@ float cursorX, cursorY;
 float azimuth = 0;
 float currentZ = 0.0;
 float light = 0;
-float rotationX, rotationY, rotationZ;
 
 private class Target
 {
@@ -186,10 +185,4 @@ int hitTest()
 void onLightEvent(float v) //this just updates the light value
 {
   light = v;
-}
-
-void onGyroscopeEvent(float x, float y, float z) {
-  rotationX = x;
-  rotationY = y;
-  rotationZ = z;
 }
