@@ -15,7 +15,6 @@ private class Target
   //boolean selected = false;
 }
 
-
 private class Selection
 {
   // Introduce variable here
@@ -28,7 +27,7 @@ private class Selection
     for (int i = 0; i < 4; i++)
     {
       determineFill(i);
-      rect(width/2, height/4 + 150*i, 300, 100);
+      rect(width/2, height/4 + 300*i, 700, 250);
     }
   }
 
@@ -105,7 +104,7 @@ boolean userDone = false;
 int countDownTimerWait = 0;
 
 void setup() {
-  size(480,800); //you can change this to be fullscreen
+  size(1080,1920); //you can change this to be fullscreen
   frameRate(60);
   sensor = new KetaiSensor(this);
   sensor.start();
