@@ -36,32 +36,38 @@ private class Selection
     {
       determineFill(i);
       rect(width/2, height/4 + 300*i, 700, 250);
-      if (targets.get(trialIndex).target==i) {
-        if (t.action == 0) arrow(width/2 - 350, height/4+300*i, width/2 + 350, height/4 + 300*i);
-        else arrow(width/2, (height/4+300*i) - 125, width/2, (height/4 + 300*i) + 125);
+      if (t.target == i) {
+        if (t.action == 0) arrow(width/2 - 300, height/4+300*i, width/2 + 300, height/4 + 300*i);
+        else arrow(width/2, (height/4+300*i) - 115, width/2, (height/4 + 300*i) + 115);
       }
     }
   }
 
   private void arrow(int x1, int y1, int x2, int y2) {
-    fill(255, 255, 255);
-    strokeWeight(2);
+    // ellipseMode(RADIUS);
+    // fill(255);
+    // ellipse(x1, y1, 10, 10);
+    // fill(150);
+    // ellipse(x2, y2, 10, 10);
+
+    strokeWeight(20);
+    stroke(255);
     line(x1, y1, x2, y2);
     pushMatrix();
     translate(x2, y2);
     float a = atan2(x1-x2, y2-y1);
     rotate(a);
-    line(0, 0, -10, -10);
-    line(0, 0, 10, -10);
+    line(0, 0, -50, -50);
+    line(0, 0, 50, -50);
     popMatrix();
+
+    strokeWeight(0);
+    stroke(255);
   }
 
   private void determineFill(int index)
   {
-    if (onTarget()) {
-      fill(0,255,0);
-      
-    }
+    if (onTarget()) fill(0,255,0);
     else if (targets.get(trialIndex).target==index) fill(0,0,255);
     else if (index == selectedIndex) fill(0,255,255); 
     else fill(180,180,180);
@@ -192,11 +198,11 @@ void draw() {
    */
   selection.drawSelection();
 
-  fill(255);//white
-  text("Trial " + (trialIndex+1) + " of " +trialCount, width/2, 50);
-  text("Target #" + (targets.get(trialIndex).target)+1, width/2, 100);
+  // fill(255);//white
+  // text("Trial " + (trialIndex+1) + " of " +trialCount, width/2, 50);
+  // text("Target #" + (targets.get(trialIndex).target)+1, width/2, 100);
  
-  action.drawAction();
+  // action.drawAction();
 }
 
 void testSelectionActionMet() {
