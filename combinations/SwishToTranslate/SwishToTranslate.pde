@@ -30,17 +30,38 @@ private class Selection
 
   // Main selection drawing method called by draw()
   void drawSelection() {
+    Target t = targets.get(trialIndex);
     rectMode(CENTER);
     for (int i = 0; i < 4; i++)
     {
       determineFill(i);
       rect(width/2, height/4 + 300*i, 700, 250);
+      if (targets.get(trialIndex).target==i) {
+        if (t.action == 0) arrow(width/2 - 350, height/4+300*i, width/2 + 350, height/4 + 300*i);
+        else arrow(width/2, (height/4+300*i) - 125, width/2, (height/4 + 300*i) + 125);
+      }
     }
+  }
+
+  private void arrow(int x1, int y1, int x2, int y2) {
+    fill(255, 255, 255);
+    strokeWeight(2);
+    line(x1, y1, x2, y2);
+    pushMatrix();
+    translate(x2, y2);
+    float a = atan2(x1-x2, y2-y1);
+    rotate(a);
+    line(0, 0, -10, -10);
+    line(0, 0, 10, -10);
+    popMatrix();
   }
 
   private void determineFill(int index)
   {
-    if (onTarget()) fill(0,255,0);
+    if (onTarget()) {
+      fill(0,255,0);
+      
+    }
     else if (targets.get(trialIndex).target==index) fill(0,0,255);
     else if (index == selectedIndex) fill(0,255,255); 
     else fill(180,180,180);
