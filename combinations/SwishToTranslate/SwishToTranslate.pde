@@ -32,6 +32,12 @@ private class Selection
   void drawSelection() {
     Target t = targets.get(trialIndex);
     rectMode(CENTER);
+
+    if (onTarget()) 
+      background(118, 166, 173); //bg on target
+    else 
+      background(109, 110, 113);
+
     for (int i = 0; i < 4; i++)
     {
       determineFill(i);
@@ -61,16 +67,30 @@ private class Selection
     line(0, 0, 50, -50);
     popMatrix();
 
-    strokeWeight(0);
-    stroke(255);
+    noStroke();
   }
 
   private void determineFill(int index)
   {
-    if (onTarget()) fill(0,255,0);
-    else if (targets.get(trialIndex).target==index) fill(0,0,255);
-    else if (index == selectedIndex) fill(0,255,255); 
-    else fill(180,180,180);
+    if (targets.get(trialIndex).target==index) {
+      // target
+      if (onTarget())
+        fill(15, 117, 188);
+      else
+        fill(46, 49, 146);  
+    }
+    else if (index == selectedIndex){ 
+      // selector
+      if (onTarget())
+        fill(15, 117, 188);
+      else
+        fill(209, 210, 212); 
+    }
+    else 
+    {
+      // default 
+      fill(58, 58, 60);
+    }
   }
 
   // This method return if we're actually on targer
