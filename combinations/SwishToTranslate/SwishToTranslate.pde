@@ -208,6 +208,8 @@ void draw() {
   
   if (userDone)
   {
+    textSize(50);
+    fill(255);
     text("User completed " + trialCount + " trials", width/2, 50);
     text("User took " + nfc((finishTime-startTime)/1000f/trialCount,1) + " sec per target", width/2, 150);
     return;
@@ -218,9 +220,10 @@ void draw() {
    */
   selection.drawSelection();
 
-  // fill(255);//white
-  // text("Trial " + (trialIndex+1) + " of " +trialCount, width/2, 50);
-  // text("Target #" + (targets.get(trialIndex).target)+1, width/2, 100);
+  fill(255);//white
+  textSize(30);
+  text("Trial " + (trialIndex+1) + " of " +trialCount, width/2, 50);
+  text("Target #" + (targets.get(trialIndex).target+1), width/2, 100);
  
   // action.drawAction();
 }
